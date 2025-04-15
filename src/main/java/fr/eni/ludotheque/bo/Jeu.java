@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 public class Jeu {
     @Id
+    @GeneratedValue
     private Long noJeu;
 
     @Column(nullable = false)

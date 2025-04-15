@@ -12,9 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 public class Client {
     @Id
+    @GeneratedValue
     private Long noClient;
 
     @Column(nullable = false)
