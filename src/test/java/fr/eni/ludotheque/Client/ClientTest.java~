@@ -17,7 +17,6 @@ public class ClientTest {
         Client client = new Client().builder().nom("nom").prenom("prenom").email("email").noTelephone("noTelephone").build();
 
         Assert.notNull(client, "Client not null");
-        log.info(client.toString());
     }
 
     @Test
