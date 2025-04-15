@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Entity
 public class Location {
     @Id
+    @GeneratedValue
     private Long noLocation;
 
     @Column(nullable = false)
