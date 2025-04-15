@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ludotheque
+  datasource:
+    url: jdbc:sqlserver://localhost;databasename=ludotheque;integratedSecurity=false;encrypt=false;trustServerCertificate=false
+    username: sa
+    password: Pa$$w0rd
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
+# Configuration Swagger/OpenAPI
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+    resolve-schema-properties: true
+    group-configs:
+      - group: public
+        display-name: API Ludothèque
+        paths-to-match: /**
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
