@@ -1,7 +1,10 @@
 package fr.eni.ludotheque.controller;
 
 import fr.eni.ludotheque.bo.Jeu;
-import fr.eni.ludotheque.repository.JeuRepository;
+import fr.eni.ludotheque.service.JeuService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,35 +12,39 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jeux")
+@Tag(name = "Jeu API", description = "Gestion des jeux de la ludothèque")
 public class JeuController {
 
     @Autowired
-    private JeuRepository jeuRepository;
+    private JeuService jeuService;
 
     @GetMapping
+    @Operation(summary = "Lister tous les jeux", description = "Récupère tous les jeux disponibles.")
     public List<Jeu> getAll() {
-        return jeuRepository.findAll();
+        return jeuService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Jeu getById(@PathVariable Long id) {
-        return jeuRepository.findById(id).orElse(null);
+    @Operation(summary = "Récupérer un jeu par ID")
+    public Jeu getById(@Parameter(description = "ID du jeu") @PathVariable Long id) {
+        return jeuService.getById(id);
     }
 
     @PostMapping
-    public Jeu create(@RequestBody Jeu jeu) {
-        return jeuRepository.save(jeu);
+    @Operation(summary = "Créer un nouveau jeu")
+    public Jeu create(@Parameter(description = "Objet Jeu à créer") @RequestBody Jeu jeu) {
+        return jeuService.create(jeu);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Mettre à jour un jeu existant")
     public Jeu update(@PathVariable Long id, @RequestBody Jeu jeu) {
-        jeu.setNoJeu(id);
-        return jeuRepository.save(jeu);
+        return jeuService.update(id, jeu);
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Supprimer un jeu")
     public void delete(@PathVariable Long id) {
-        jeuRepository.deleteById(id);
+        jeuService.delete(id);
     }
 }
-
