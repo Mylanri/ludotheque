@@ -17,7 +17,8 @@ import java.util.List;
 public class Jeu {
     @Id
     @GeneratedValue
-    private Long noJeu;
+    @Column(name = "jeu_id")
+    private Long jeuId;
 
     @Column(nullable = false)
     private String titre;

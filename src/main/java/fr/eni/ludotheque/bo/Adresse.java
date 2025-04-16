@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "address")
+@Table(name = "adresse")
 public class Adresse {
     @Id
     @GeneratedValue
-    private Long adresse_id;
+    @Column(name = "adresse_id")
+    private Long adresseId;
 
     @Column(nullable = false)
     private String rue;

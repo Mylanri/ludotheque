@@ -38,7 +38,7 @@ public class FactureController {
     @PutMapping("/{id}")
     @Operation(summary = "Mettre à jour une facture")
     public Facture update(@PathVariable Long id, @RequestBody Facture facture) {
-        facture.setNoFacture(id);
+        facture.setFactureId(id);
         return factureRepository.save(facture);
     }
 

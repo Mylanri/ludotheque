@@ -1,8 +1,6 @@
 package fr.eni.ludotheque.bo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,11 +17,12 @@ import java.util.List;
 public class Facture {
     @Id
     @GeneratedValue
-    private Long noFacture;
+    @Column(name = "facture_id")
+    private Long factureId;
 
     private LocalDate datePaiement;
 
     @OneToMany(mappedBy = "facture")
-    private List<Facture> factures;
+    private List<Location> locations;
 }
 

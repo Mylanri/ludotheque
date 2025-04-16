@@ -38,7 +38,7 @@ public class ExemplaireController {
     @PutMapping("/{id}")
     @Operation(summary = "Mettre à jour un exemplaire")
     public Exemplaire update(@PathVariable Long id, @RequestBody Exemplaire exemplaire) {
-        exemplaire.setNoExemplaire(id);
+        exemplaire.setExemplaireId(id);
         return exemplaireRepository.save(exemplaire);
     }
 

@@ -13,10 +13,12 @@ import java.util.List;
 @Builder
 @Data
 @Entity
+@Table(name = "client")
 public class Client {
     @Id
     @GeneratedValue
-    private Long client_id;
+    @Column(name = "client_id")
+    private Long clientId;
 
     @Column(nullable = false)
     private String nom;
@@ -31,7 +33,7 @@ public class Client {
     private String noTelephone;
 
     @OneToOne
-    @JoinColumn(name = "adresse_id")
+    @JoinColumn(name = "adresse_id", referencedColumnName = "adresse_id")
     private Adresse adresse;
 
     @OneToMany(mappedBy = "client")

@@ -16,11 +16,12 @@ import java.util.List;
 public class Genre {
     @Id
     @GeneratedValue
-    private Long noGenre;
+    @Column(name = "genre_id")
+    private Long genreId;
 
     @Column(nullable = false)
     private String libelle;
 
-    @OneToMany(mappedBy = "genre")
+    @ManyToMany(mappedBy = "genres")
     private List<Jeu> jeux;
 }

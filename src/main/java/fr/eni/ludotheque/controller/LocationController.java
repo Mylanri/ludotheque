@@ -58,7 +58,7 @@ public class LocationController {
             @PathVariable Long id,
             @Parameter(description = "Nouvelles données de la location", required = true)
             @RequestBody Location location) {
-        location.setNoLocation(id);
+        location.setLocationId(id);
         return locationRepository.save(location);
     }
 

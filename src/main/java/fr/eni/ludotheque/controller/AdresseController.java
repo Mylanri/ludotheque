@@ -52,7 +52,7 @@ public class AdresseController {
     @PutMapping("/{id}")
     @Operation(summary = "Mettre à jour une adresse")
     public Adresse update(@PathVariable Long id, @RequestBody Adresse adresse) {
-        adresse.setNoAdresse(id);
+        adresse.setAdresseId(id);
         return adresseRepository.save(adresse);
     }
 

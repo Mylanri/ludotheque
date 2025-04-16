@@ -16,7 +16,8 @@ import java.time.LocalDate;
 public class Location {
     @Id
     @GeneratedValue
-    private Long noLocation;
+    @Column(name = "location_id")
+    private Long locationId;
 
     @Column(nullable = false)
     private LocalDate dateDebut;
@@ -26,15 +27,15 @@ public class Location {
     private Double tarifJour;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "exemplaire_id")
+    @JoinColumn(name = "exemplaire_id", referencedColumnName = "exemplaire_id")
     private Exemplaire exemplaire;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "facture_id")
+    @ManyToOne
+    @JoinColumn(name = "facture_id", referencedColumnName = "facture_id")
     private Facture facture;
 }
 
