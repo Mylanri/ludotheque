@@ -2,10 +2,16 @@ package fr.eni.ludotheque.bo;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Data
 @Entity
 public class Jeu {
@@ -35,7 +41,11 @@ public class Jeu {
     @OneToMany(mappedBy = "jeu")
     private List<Exemplaire> exemplaires;
 
-    @ManyToOne
-    @JoinColumn(name = "genre_id")
-    private Genre genre;
+    @ManyToMany
+    @JoinTable(
+            name = "jeu_genre",
+            joinColumns = @JoinColumn(name = "jeu_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private List<Genre> genres;
 }

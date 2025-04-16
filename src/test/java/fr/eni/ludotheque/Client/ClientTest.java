@@ -11,17 +11,28 @@ import org.springframework.util.Assert;
 @Slf4j
 public class ClientTest {
 
-
     @Test
     void testAddClient() {
-        Client client = new Client().builder().nom("nom").prenom("prenom").email("email").noTelephone("noTelephone").build();
+        Client client = new Client().builder()
+                .nom("nom")
+                .prenom("prenom")
+                .email("email")
+                .noTelephone("noTelephone")
+                .build();
 
         Assert.notNull(client, "Client not null");
+
         log.info(client.toString());
     }
 
     @Test
     void testAddClientWithAdress() {
+
+        Adresse adresse = new Adresse().builder()
+                .rue("rue")
+                .codePostal("codePostal")
+                .ville("ville")
+                .build();
 
         Client client = new Client().builder()
                 .noClient(1L)
@@ -29,7 +40,7 @@ public class ClientTest {
                 .prenom("prenom")
                 .email("email")
                 .noTelephone("noTelephone")
-                .adresse(new Adresse().builder().rue("rue").codePostal("codePostal").ville("ville").build())
+                .adresse(adresse)
                 .build();
 
         log.info(client.toString());
