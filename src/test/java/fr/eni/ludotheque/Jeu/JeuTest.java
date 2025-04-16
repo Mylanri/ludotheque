@@ -17,12 +17,12 @@ public class JeuTest {
     void testAddJeu() {
 
         Genre genre = new Genre().builder()
-                .noGenre(1L)
+                .genreId(1L)
                 .libelle("libelle")
                 .build();
 
         Jeu jeu = new Jeu().builder()
-                .noJeu(1L)
+                .jeuId(1L)
                 .titre("titre")
                 .reference("reference")
                 .ageMin(13)
@@ -41,17 +41,17 @@ public class JeuTest {
     void testAddJeuWithSomeGenre() {
 
         Genre genre = new Genre().builder()
-                .noGenre(1L)
+                .genreId(1L)
                 .libelle("libelle")
                 .build();
 
         Genre genre2 = new Genre().builder()
-                .noGenre(2L)
+                .genreId(2L)
                 .libelle("libelle2")
                 .build();
 
         Jeu jeu = new Jeu().builder()
-                .noJeu(1L)
+                .jeuId(1L)
                 .titre("titre")
                 .reference("reference")
                 .ageMin(13)

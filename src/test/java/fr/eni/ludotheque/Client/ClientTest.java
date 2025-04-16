@@ -35,7 +35,7 @@ public class ClientTest {
                 .build();
 
         Client client = new Client().builder()
-                .noClient(1L)
+                .clientId(1L)
                 .nom("nom")
                 .prenom("prenom")
                 .email("email")
