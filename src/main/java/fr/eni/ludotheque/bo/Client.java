@@ -16,7 +16,7 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue
-    private Long noClient;
+    private Long client_id;
 
     @Column(nullable = false)
     private String nom;
@@ -30,7 +30,8 @@ public class Client {
     @Column(nullable = false)
     private String noTelephone;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "client")
+    @OneToOne
+    @JoinColumn(name = "adresse_id")
     private Adresse adresse;
 
     @OneToMany(mappedBy = "client")

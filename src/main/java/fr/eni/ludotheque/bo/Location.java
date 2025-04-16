@@ -27,7 +27,7 @@ public class Location {
     @JoinColumn(name = "exemplaire_id")
     private Exemplaire exemplaire;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "facture_id")
     private Facture facture;
 }

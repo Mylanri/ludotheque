@@ -11,10 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "address")
 public class Adresse {
     @Id
     @GeneratedValue
-    private Long noAdresse;
+    private Long adresse_id;
 
     @Column(nullable = false)
     private String rue;
@@ -25,8 +26,7 @@ public class Adresse {
     @Column(nullable = false)
     private String ville;
 
-    @OneToOne
-    @JoinColumn(name = "client_id", nullable = false)
+    @OneToOne(mappedBy = "adresse")
     private Client client;
 }
 
