@@ -34,7 +34,8 @@ public class ExemplaireTest {
                 .build();
 
         Exemplaire exemplaire = new Exemplaire().builder()
-                .exemplaireId(1L).codebarre("codebarre")
+                .exemplaireId(1L)
+                .codebarre("codebarre")
                 .louable(true)
                 .jeu(jeu)
                 .build();
