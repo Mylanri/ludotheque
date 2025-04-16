@@ -1,5 +1,6 @@
 package fr.eni.ludotheque.service;
 
+import fr.eni.ludotheque.bo.Genre;
 import fr.eni.ludotheque.bo.Jeu;
 import fr.eni.ludotheque.repository.JeuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class JeuService {
     }
 
     public Jeu create(Jeu jeu) {
+        return jeuRepository.save(jeu);
+    }
+
+    public Jeu createJeuWithGenres(Jeu jeu, List<Genre> genres) {
+        jeu.setGenres(genres);
         return jeuRepository.save(jeu);
     }
 
