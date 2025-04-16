@@ -18,12 +18,12 @@ public class ExemplaireTest {
     void testAddExemplaire() {
 
         Genre genre = new Genre().builder()
-                .noGenre(1L)
+                .genreId(1L)
                 .libelle("libelle")
                 .build();
 
         Jeu jeu = new Jeu().builder()
-                .noJeu(1L)
+                .jeuId(1L)
                 .titre("titre")
                 .reference("reference")
                 .ageMin(13)
@@ -34,7 +34,7 @@ public class ExemplaireTest {
                 .build();
 
         Exemplaire exemplaire = new Exemplaire().builder()
-                .noExemplaire(1L).codebarre("codebarre")
+                .exemplaireId(1L).codebarre("codebarre")
                 .louable(true)
                 .jeu(jeu)
                 .build();

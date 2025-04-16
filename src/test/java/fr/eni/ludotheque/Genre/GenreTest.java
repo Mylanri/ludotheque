@@ -1,6 +1,5 @@
 package fr.eni.ludotheque.Genre;
 
-import fr.eni.ludotheque.bo.Client;
 import fr.eni.ludotheque.bo.Genre;
 import fr.eni.ludotheque.bo.Jeu;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +16,7 @@ public class GenreTest {
     @Test
     void testAddGenre() {
         Genre genre = new Genre().builder()
-                .noGenre(1L)
+                .genreId(1L)
                 .libelle("libelle")
                 .jeux(null)
                 .build();
@@ -31,7 +30,7 @@ public class GenreTest {
     void testAddGenreWithGames() {
 
         Jeu jeu = Jeu.builder()
-                .noJeu(1L)
+                .jeuId(1L)
                 .titre("titre")
                 .reference("reference")
                 .ageMin(13)
@@ -41,7 +40,7 @@ public class GenreTest {
                 .build();
 
         Jeu jeu2 = Jeu.builder()
-                .noJeu(2L)
+                .jeuId(2L)
                 .titre("titre2")
                 .reference("reference2")
                 .ageMin(14)
