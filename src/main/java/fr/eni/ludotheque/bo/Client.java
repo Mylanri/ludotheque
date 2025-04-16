@@ -1,14 +1,21 @@
 package fr.eni.ludotheque.bo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Data
 @Entity
 public class Client {
     @Id
+    @GeneratedValue
     private Long noClient;
 
     @Column(nullable = false)

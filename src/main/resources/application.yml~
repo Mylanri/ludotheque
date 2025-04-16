@@ -2,7 +2,7 @@ spring:
   application:
     name: ludotheque
   datasource:
-    url: jdbc:sqlserver://10.1.200.24;databasename=LUDO_DB;integratedSecurity=false;encrypt=false;trustServerCertificate=false
+    url: jdbc:sqlserver://localhost;databasename=ludotheque;integratedSecurity=false;encrypt=false;trustServerCertificate=false
     username: sa
     password: Pa$$w0rd
   jpa:

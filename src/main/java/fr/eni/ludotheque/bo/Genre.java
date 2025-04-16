@@ -1,9 +1,6 @@
 package fr.eni.ludotheque.bo;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -12,6 +9,7 @@ import java.util.List;
 @Entity
 public class Genre {
     @Id
+    @GeneratedValue
     private Long noGenre;
 
     @Column(nullable = false)
