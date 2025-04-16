@@ -3,8 +3,8 @@ spring:
     name: ludotheque
   datasource:
     url: jdbc:sqlserver://10.1.200.24;databasename=LUDO_DB;integratedSecurity=false;encrypt=false;trustServerCertificate=false
-    username: sa
-    password: Pa$$w0rd
+    username: LUDO_USER
+    password: LUDO_PWD85260
   jpa:
     show-sql: true
     hibernate:
