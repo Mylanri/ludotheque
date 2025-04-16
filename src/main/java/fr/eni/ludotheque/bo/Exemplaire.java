@@ -16,7 +16,8 @@ import java.util.List;
 public class Exemplaire {
     @Id
     @GeneratedValue
-    private Long noExemplaire;
+    @Column(name = "exemplaire_id")
+    private Long exemplaireId;
 
     @Column(nullable = false)
     private String codebarre;
@@ -25,7 +26,7 @@ public class Exemplaire {
     private Boolean louable;
 
     @ManyToOne
-    @JoinColumn(name = "jeu_id")
+    @JoinColumn(name = "jeu_id" , referencedColumnName = "jeu_id")
     private Jeu jeu;
 
     @OneToMany(mappedBy = "exemplaire")

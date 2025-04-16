@@ -26,7 +26,7 @@ public class GenreService {
     }
 
     public Genre update(Long id, Genre genre) {
-        genre.setNoGenre(id);
+        genre.setGenreId(id);
         return genreRepository.save(genre);
     }
 

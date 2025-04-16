@@ -26,7 +26,7 @@ public class JeuService {
     }
 
     public Jeu update(Long id, Jeu jeu) {
-        jeu.setNoJeu(id);
+        jeu.setJeuId(id);
         return jeuRepository.save(jeu);
     }
 

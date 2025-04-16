@@ -38,7 +38,7 @@ public class ClientController {
     @PutMapping("/{id}")
     @Operation(summary = "Mettre à jour un client")
     public Client update(@PathVariable Long id, @RequestBody Client client) {
-        client.setNoClient(id);
+        client.setClientId(id);
         return clientRepository.save(client);
     }
 

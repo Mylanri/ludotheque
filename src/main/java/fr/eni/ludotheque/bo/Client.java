@@ -13,10 +13,12 @@ import java.util.List;
 @Builder
 @Data
 @Entity
+@Table(name = "client")
 public class Client {
     @Id
     @GeneratedValue
-    private Long noClient;
+    @Column(name = "client_id")
+    private Long clientId;
 
     @Column(nullable = false)
     private String nom;
@@ -30,7 +32,8 @@ public class Client {
     @Column(nullable = false)
     private String noTelephone;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "client")
+    @OneToOne
+    @JoinColumn(name = "adresse_id", referencedColumnName = "adresse_id")
     private Adresse adresse;
 
     @OneToMany(mappedBy = "client")
