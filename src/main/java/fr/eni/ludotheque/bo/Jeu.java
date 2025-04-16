@@ -39,10 +39,10 @@ public class Jeu {
     @Column(nullable = false)
     private Double tarifJour;
 
-    @OneToMany(mappedBy = "jeu")
+    @OneToMany(mappedBy = "jeu", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Exemplaire> exemplaires;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "jeu_genre",
             joinColumns = @JoinColumn(name = "jeu_id"),

@@ -26,15 +26,15 @@ public class Location {
 
     private Double tarifJour;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     private Client client;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exemplaire_id", referencedColumnName = "exemplaire_id")
     private Exemplaire exemplaire;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "facture_id", referencedColumnName = "facture_id")
     private Facture facture;
 }

@@ -25,7 +25,7 @@ public class Exemplaire {
     @Column(nullable = false)
     private Boolean louable;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "jeu_id" , referencedColumnName = "jeu_id")
     private Jeu jeu;
 
