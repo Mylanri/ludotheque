@@ -42,7 +42,7 @@ public class Jeu {
     @OneToMany(mappedBy = "jeu")
     private List<Exemplaire> exemplaires;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "jeu_genre",
             joinColumns = @JoinColumn(name = "jeu_id"),
