@@ -26,8 +26,5 @@ public class Adresse {
 
     @Column(nullable = false)
     private String ville;
-
-    @OneToOne(mappedBy = "adresse")
-    private Client client;
 }
 

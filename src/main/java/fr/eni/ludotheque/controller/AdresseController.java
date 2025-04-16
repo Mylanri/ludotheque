@@ -1,7 +1,6 @@
 package fr.eni.ludotheque.controller;
 
 import fr.eni.ludotheque.bo.Adresse;
-import fr.eni.ludotheque.bo.Client;
 import fr.eni.ludotheque.dto.AdresseDTO;
 import fr.eni.ludotheque.repository.AdresseRepository;
 import fr.eni.ludotheque.repository.ClientRepository;
@@ -37,14 +36,10 @@ public class AdresseController {
     @PostMapping
     @Operation(summary = "Créer une nouvelle adresse")
     public Adresse create(@RequestBody AdresseDTO adresseDTO) {
-        Client client = clientRepository.findById(adresseDTO.getClientId())
-                .orElseThrow(() -> new RuntimeException("Client not found"));
-
         Adresse adresse = new Adresse();
         adresse.setRue(adresseDTO.getRue());
         adresse.setCodePostal(adresseDTO.getCodePostal());
         adresse.setVille(adresseDTO.getVille());
-        adresse.setClient(client);
 
         return adresseRepository.save(adresse);
     }
