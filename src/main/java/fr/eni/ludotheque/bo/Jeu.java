@@ -39,7 +39,7 @@ public class Jeu {
     @Column(nullable = false)
     private Double tarifJour;
 
-    @OneToMany(mappedBy = "jeu")
+    @OneToMany(mappedBy = "jeu", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Exemplaire> exemplaires;
 
     @ManyToMany(fetch = FetchType.LAZY)
