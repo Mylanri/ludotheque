@@ -44,7 +44,6 @@ public class AdresseController {
         adresse.setRue(adresseDTO.getRue());
         adresse.setCodePostal(adresseDTO.getCodePostal());
         adresse.setVille(adresseDTO.getVille());
-        adresse.setClient(client);
 
         return adresseRepository.save(adresse);
     }
