@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @Data
 @Entity
-@Table(name = "client")
+@Table(name = "client", uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 public class Client {
     @Id
     @GeneratedValue
