@@ -2,6 +2,7 @@ package fr.eni.ludotheque.controller;
 
 import fr.eni.ludotheque.bo.Client;
 import fr.eni.ludotheque.repository.ClientRepository;
+import fr.eni.ludotheque.service.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,13 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
 
+    @Autowired
+    private ClientService clientService;
+
     @GetMapping
     @Operation(summary = "Lister tous les clients")
     public List<Client> getAll() {
-        return clientRepository.findAll();
+        return clientService.getAll();
     }
 
     @GetMapping("/{id}")
@@ -32,13 +36,13 @@ public class ClientController {
     @GetMapping("/nom/{nom}")
     @Operation(summary = "Récupérer les clients par Nom")
     public List<Client>  getByNom(@PathVariable String nom) {
-        return clientRepository.findByNom(nom);
+        return clientService.getByNom(nom);
     }
 
     @PostMapping
     @Operation(summary = "Créer un nouveau client")
     public Client create(@RequestBody Client client) {
-        return clientRepository.save(client);
+        return clientService.create(client);
     }
 
     @PutMapping("/{id}")
@@ -51,6 +55,6 @@ public class ClientController {
     @DeleteMapping("/{id}")
     @Operation(summary = "Supprimer un client")
     public void delete(@PathVariable Long id) {
-        clientRepository.deleteById(id);
+        clientService.deleteById(id);
     }
 }

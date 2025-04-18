@@ -13,8 +13,18 @@ public class ClientService  {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Client create(Client client, Adresse adresse) {
-        client.setAdresse(adresse);
+    public List<Client> getAll() {
+        return clientRepository.findAll();
+    }
+
+    public Client getById(Long id){
+        return clientRepository.getReferenceById(id);
+    }
+
+    public Client create(Client client) {
+        if (client.getAdresse() != null) {
+            client.setAdresse(client.getAdresse());
+        }
         return clientRepository.save(client);
     }
 
@@ -22,4 +32,7 @@ public class ClientService  {
         return clientRepository.findByNom(nom);
     }
 
+    public void deleteById(Long id){
+        clientRepository.deleteById(id);
+    }
 }
