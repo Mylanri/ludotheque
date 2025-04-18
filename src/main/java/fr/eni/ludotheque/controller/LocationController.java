@@ -2,15 +2,17 @@ package fr.eni.ludotheque.controller;
 
 import fr.eni.ludotheque.bo.Location;
 import fr.eni.ludotheque.repository.LocationRepository;
+import fr.eni.ludotheque.service.LocationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/locations")
@@ -20,10 +22,14 @@ public class LocationController {
     @Autowired
     private LocationRepository locationRepository;
 
+    @Autowired
+    private LocationService locationService;
+
+
     @GetMapping
     @Operation(summary = "Lister toutes les locations", description = "Récupère toutes les locations enregistrées dans la base.")
     public List<Location> getAll() {
-        return locationRepository.findAll();
+        return locationService.getAll();
     }
 
     @GetMapping("/{id}")
@@ -35,7 +41,7 @@ public class LocationController {
     public Location getById(
             @Parameter(description = "ID de la location à récupérer", required = true)
             @PathVariable Long id) {
-        return locationRepository.findById(id).orElse(null);
+        return locationService.getById(id);
     }
 
     @PostMapping
@@ -44,7 +50,15 @@ public class LocationController {
     public Location create(
             @Parameter(description = "Objet Location à créer", required = true)
             @RequestBody Location location) {
-        return locationRepository.save(location);
+        return locationService.create(location);
+    }
+
+    @PostMapping("/codebarre")
+    @Operation(summary = "Créer une nouvelle location via codebarre")
+    @ApiResponse(responseCode = "201", description = "Location créée avec succès")
+    public Location createWithCodebarre(
+            @RequestBody Map<String, Object> payload) {
+        return locationService.createWithCodebarre(payload);
     }
 
     @PutMapping("/{id}")
@@ -58,8 +72,7 @@ public class LocationController {
             @PathVariable Long id,
             @Parameter(description = "Nouvelles données de la location", required = true)
             @RequestBody Location location) {
-        location.setLocationId(id);
-        return locationRepository.save(location);
+        return locationService.update(location);
     }
 
     @DeleteMapping("/{id}")
@@ -68,6 +81,6 @@ public class LocationController {
     public void delete(
             @Parameter(description = "ID de la location à supprimer", required = true)
             @PathVariable Long id) {
-        locationRepository.deleteById(id);
+        locationService.delete(id);
     }
 }

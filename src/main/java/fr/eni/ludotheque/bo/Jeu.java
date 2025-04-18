@@ -1,5 +1,6 @@
 package fr.eni.ludotheque.bo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
@@ -41,6 +42,7 @@ public class Jeu {
     private Double tarifJour;
 
     @OneToMany(mappedBy = "jeu", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Exemplaire> exemplaires;
 
     @ManyToMany(fetch = FetchType.LAZY)

@@ -1,5 +1,6 @@
 package fr.eni.ludotheque.bo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class Exemplaire {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "jeu_id" , referencedColumnName = "jeu_id")
+    @JsonManagedReference
     private Jeu jeu;
 
     @OneToMany(mappedBy = "exemplaire")
