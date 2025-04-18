@@ -1,5 +1,6 @@
 package fr.eni.ludotheque.bo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class Location {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
+    @JsonBackReference
     private Client client;
 
     @ManyToOne(fetch = FetchType.LAZY)

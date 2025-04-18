@@ -1,5 +1,6 @@
 package fr.eni.ludotheque.bo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +38,7 @@ public class Client {
     private Adresse adresse;
 
     @OneToMany(mappedBy = "client")
+    @JsonManagedReference
     private List<Location> locations;
 }
 

@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
-    public List<Client> findByNom(String nom);
+    @Query("SELECT c FROM Client c WHERE c.nom LIKE CONCAT('%', :nom, '%')")
+    List<Client> findByNom(String nom);
 }
