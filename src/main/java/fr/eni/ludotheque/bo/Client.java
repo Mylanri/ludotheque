@@ -32,7 +32,7 @@ public class Client {
     @Column(nullable = false)
     private String noTelephone;
 
-    @OneToOne(orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "adresse_id", referencedColumnName = "adresse_id")
     private Adresse adresse;
 
