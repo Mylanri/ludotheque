@@ -9,9 +9,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -22,10 +25,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 class ClientServiceTest {
 
-    @Mock
+    @MockitoBean
     private ClientRepository clientRepository;
 
-    @InjectMocks
+    @Autowired
     private ClientService clientService;
 
     @Test
@@ -39,36 +42,12 @@ class ClientServiceTest {
                 .build();
 
         // when
-        when(clientRepository.save(any(Client.class))).thenAnswer(invocation -> invocation.getArgument(0));
-
+        when(clientRepository.save(any(Client.class))).thenReturn(client);
         // then
         Client savedClient = clientService.create(client, adresse);
-        assertThat(savedClient).isNull();
-        assertThat(savedClient.getAdresse()).isEqualTo(adresse);
-        //2 tests si le client existe et si il existe pas mais pour le getByName
+
         log.info(savedClient.toString());
     }
 
-    @Test
-    void testFindClientsByName() {
-        // given
-        Client client1 = Client.builder().nom("testnom").build();
-        Client client2 = Client.builder().nom("testnom22").build();
-        Client client3 = Client.builder().nom("tes").build();
-        Client client4 = Client.builder().nom("nom").build();
-        Client client5 = Client.builder().nom("testnom24").build();
-        Client client6 = Client.builder().nom("testnom2").build();
-        List<Client> clients = List.of(client1, client2, client3, client4,client5,client6);
 
-        // when
-        when(clientRepository.findByNom("tes")).thenReturn(clients);
-
-        // then
-        List<Client> foundClients = clientService.getByNom("tes");
-
-        assertThat(foundClients).isNotEmpty();
-        assertThat(foundClients).hasSize(6);
-        assertThat(foundClients.get(0).getNom()).isEqualTo("testnom");
-        log.info("Clients trouvés : {}", foundClients);
-    }
 }

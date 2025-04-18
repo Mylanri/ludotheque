@@ -7,8 +7,6 @@ spring:
     password: LUDO_PWD85260
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: update
 
 # Configuration Swagger/OpenAPI
 springdoc:
