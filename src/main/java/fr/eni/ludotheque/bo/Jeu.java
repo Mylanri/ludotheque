@@ -2,6 +2,7 @@ package fr.eni.ludotheque.bo;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,17 +21,17 @@ public class Jeu {
     @Column(name = "jeu_id")
     private Long jeuId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String titre;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     @Min(13)
     private String reference;
 
     @Column(nullable = false)
     private Integer ageMin;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private String description;
 
     @Column(nullable = false)

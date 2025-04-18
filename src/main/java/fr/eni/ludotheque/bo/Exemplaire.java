@@ -13,13 +13,14 @@ import java.util.List;
 @Builder
 @Data
 @Entity
+@Table(name = "exemplaire", uniqueConstraints = @UniqueConstraint(columnNames = {"codebarre"}))
 public class Exemplaire {
     @Id
     @GeneratedValue
     @Column(name = "exemplaire_id")
     private Long exemplaireId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 13)
     private String codebarre;
 
     @Column(nullable = false)

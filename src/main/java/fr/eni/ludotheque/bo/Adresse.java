@@ -26,5 +26,6 @@ public class Adresse {
 
     @Column(nullable = false)
     private String ville;
+
 }
 

@@ -29,6 +29,12 @@ public class ClientController {
         return clientRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/nom/{nom}")
+    @Operation(summary = "Récupérer les clients par Nom")
+    public List<Client>  getByNom(@PathVariable String nom) {
+        return clientRepository.findByNom(nom);
+    }
+
     @PostMapping
     @Operation(summary = "Créer un nouveau client")
     public Client create(@RequestBody Client client) {
