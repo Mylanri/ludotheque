@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -50,9 +51,10 @@ public class LocationServiceTest {
                 .facture(null)
                 .build();
         //when
-        when(locationRepository.save(any(Location.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        when(locationRepository.save(any(Location.class))).thenReturn(location);
         Location savedLocation = locationRepository.save(location);
         //then
+        assertThat(savedLocation).isNotNull();
         log.info(savedLocation.toString());
     }
 
@@ -77,10 +79,11 @@ public class LocationServiceTest {
                 .locations(List.of(location))
                 .build();
         //when
-        when(locationRepository.save(any(Location.class))).thenAnswer(invocation -> invocation.getArgument(0));
-        when(exemplaireRepository.save(any(Exemplaire.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        when(locationRepository.save(any(Location.class))).thenReturn(location);
+        when(exemplaireRepository.save(any(Exemplaire.class))).thenReturn(exemplaire);
         Exemplaire savedExemplaire = exemplaireRepository.save(exemplaire);
         //then
+        assertThat(savedExemplaire).isNotNull();
         log.info(savedExemplaire.toString());
     }
 }
